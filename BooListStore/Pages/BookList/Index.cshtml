@@ -1,0 +1,48 @@
+﻿@page
+@model BookListStore.Pages.BookList.IndexModel
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-9">
+        <h2 class="text-info">Book List</h2>
+    </div>
+    <div class="col-3">
+        <a class="btn btn-info form-control text-white">Create New Book</a>
+    </div>
+    <div class="col-12 border m-3 p-3">
+        @if (Model.Books.Count() > 0)
+        {
+            <table class="table border table-striped">
+                <tr class="table-secondary">
+                    <th>
+                        <label asp-for="@Model.Books.FirstOrDefault().Name"></label>
+                    </th>
+                    <th>
+                        <label asp-for="@Model.Books.FirstOrDefault().Author"></label>
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Books)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(s => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(s => item.Author)
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <a class="btn btn-success btn-sm text-white">Edit</a>
+
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p class="bg-info text-light">no books available right the moment</p>
+        }
+    </div>
+</div>
