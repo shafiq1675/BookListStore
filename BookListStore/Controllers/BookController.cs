@@ -19,7 +19,7 @@ namespace BookListStore.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
             return Json(new { data = _db.Book.ToList() });
         }
@@ -33,7 +33,7 @@ namespace BookListStore.Controllers
                 return Json(new { success=false, message= "Error while Deleting."});
             }
             _db.Remove(bookFromDb);
-            _db.SaveChangesAsync();
+            _ = _db.SaveChangesAsync();
             return Json(new { success = true, message = "Delete Successfully." });
 
         }
