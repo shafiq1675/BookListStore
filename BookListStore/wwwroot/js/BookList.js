@@ -57,6 +57,7 @@ function Delete(url) {
                     url: url,
                     success: function (data) {
                         if (data.success) {
+                            toastr.options = { "positionClass": "toast-top-center" }
                             toastr.success(data.message);
                             dataTable.ajax.reload();
                         }
